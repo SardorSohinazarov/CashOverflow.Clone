@@ -28,7 +28,10 @@ namespace CashOverflow.Clone
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "CashOverflow.Clone", Version = "v1" });
+                c.SwaggerDoc(
+                    name:"v1",
+                    info:new OpenApiInfo { Title = "CashOverflow.Clone", Version = "v1" }
+                    );
             });
         }
 
