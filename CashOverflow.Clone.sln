@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CashOverflow.Clone", "CashO
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashOverflow.Infrastructure.Build", "CashOverflow.Infrastructure.Build\CashOverflow.Infrastructure.Build.csproj", "{46D77B65-6D68-4EBD-B020-0761AE444E92}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashOverflow.Clone.Tests.Unit", "CashOverflow.Clone.Tests.Unit\CashOverflow.Clone.Tests.Unit.csproj", "{2EC91697-7D6A-4093-BA90-D5A832E54604}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{46D77B65-6D68-4EBD-B020-0761AE444E92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46D77B65-6D68-4EBD-B020-0761AE444E92}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46D77B65-6D68-4EBD-B020-0761AE444E92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EC91697-7D6A-4093-BA90-D5A832E54604}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EC91697-7D6A-4093-BA90-D5A832E54604}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EC91697-7D6A-4093-BA90-D5A832E54604}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EC91697-7D6A-4093-BA90-D5A832E54604}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
