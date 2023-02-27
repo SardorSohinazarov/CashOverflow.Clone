@@ -1,4 +1,9 @@
-﻿namespace CashOverflow.Clone.Models.Locations
+﻿// --------------------------------------------------------
+// Copyright (c) Coalition of Good-Hearted Engineers
+// Developed by CashOverflow Team
+// --------------------------------------------------------
+
+namespace CashOverflow.Clone.Models.Locations
 {
     public enum Country
     {

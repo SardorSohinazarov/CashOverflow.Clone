@@ -3,6 +3,7 @@
 // Developed by CashOverflow Team
 // --------------------------------------------------------
 
+using CashOverflow.Clone.Broker.StorageBroker;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -26,6 +27,8 @@ namespace CashOverflow.Clone
         {
 
             services.AddControllers();
+            services.AddDbContext<StorageBroker>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc(
