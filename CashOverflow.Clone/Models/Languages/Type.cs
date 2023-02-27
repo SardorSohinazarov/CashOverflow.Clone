@@ -3,9 +3,12 @@
 // Developed by CashOverflow Team
 // --------------------------------------------------------
 
-namespace CashOverflow.Clone.Models.Locations;
+namespace CashOverflow.Clone.Models.Languages;
 
-public enum Country
+public enum Type
 {
-    Uzbekistan
+    Other,
+    Frontend,
+    Backend,
+    Fullstack
 }

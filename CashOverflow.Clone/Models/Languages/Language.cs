@@ -5,13 +5,13 @@
 
 using System;
 
-namespace CashOverflow.Clone.Models.Locations;
+namespace CashOverflow.Clone.Models.Languages;
 
-public class Location
+public class Language
 {
     public Guid Id { get; set; }
     public string Name { get; set; }
-    public Country Country { get; set; }
+    public Type Type { get; set; }
     public DateTimeOffset CreatedDate { get; set; }
     public DateTimeOffset UpdatedDate { get; set; }
 }
