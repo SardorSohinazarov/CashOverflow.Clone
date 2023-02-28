@@ -1,4 +1,8 @@
-﻿using System.Reflection.Emit;
+﻿// --------------------------------------------------------
+// Copyright (c) Coalition of Good-Hearted Engineers
+// Developed by CashOverflow Team
+// --------------------------------------------------------
+
 using System.Threading.Tasks;
 using CashOverflow.Clone.Models.Locations;
 

@@ -1,4 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿// --------------------------------------------------------
+// Copyright (c) Coalition of Good-Hearted Engineers
+// Developed by CashOverflow Team
+// --------------------------------------------------------
+
+using System.Threading.Tasks;
 using CashOverflow.Clone.Models.Locations;
 using Microsoft.EntityFrameworkCore;
 

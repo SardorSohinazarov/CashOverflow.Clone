@@ -1,4 +1,9 @@
-﻿namespace CashOverflow.Clone.Broker.StorageBroker
+﻿// --------------------------------------------------------
+// Copyright (c) Coalition of Good-Hearted Engineers
+// Developed by CashOverflow Team
+// --------------------------------------------------------
+
+namespace CashOverflow.Clone.Broker.StorageBroker
 {
     public partial interface IStorageBroker
     {
