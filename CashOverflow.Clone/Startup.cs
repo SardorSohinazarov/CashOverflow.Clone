@@ -36,6 +36,8 @@ namespace CashOverflow.Clone
                     info:new OpenApiInfo { Title = "CashOverflow.Clone", Version = "v1" }
                     );
             });
+
+            services.AddTransient<IStorageBroker,StorageBroker>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
