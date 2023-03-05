@@ -1,17 +1,41 @@
 ﻿using System.Threading.Tasks;
+using CashOverflow.Clone.Broker.Loggings;
 using CashOverflow.Clone.Broker.StorageBroker;
 using CashOverflow.Clone.Models.Locations;
+using CashOverflow.Clone.Models.Locations.Exceptions;
 
 namespace CashOverflow.Clone.Services.Foundation.Locations
 {
     public class LocationService : ILocationService
     {
-        private IStorageBroker storageBroker;
+        private readonly IStorageBroker storageBroker;
+        private readonly ILoggingBroker loggingBroker;
 
         public LocationService(IStorageBroker storageBroker)=>
             this.storageBroker = storageBroker;
 
-        public async ValueTask<Location> AddLocationAsync(Location location) =>
-            await this.storageBroker.InsertLocationAsync(location);
+        public LocationService(
+            IStorageBroker storageBroker, 
+            ILoggingBroker loggingBroker)
+        {
+            this.storageBroker = storageBroker;
+            this.loggingBroker = loggingBroker;
+        }
+
+        public async ValueTask<Location> AddLocationAsync(Location location)
+        {
+            try
+            {
+                if (location is null)
+                    throw new NullLocationException();
+                return await this.storageBroker.InsertLocationAsync(location);
+            }catch(NullLocationException nullLocationException)
+            {
+                var locationValidationException = new LocationValidationException(nullLocationException);
+                this.loggingBroker.LogError(locationValidationException);
+
+                throw locationValidationException;
+            }
+        }
     }
 }

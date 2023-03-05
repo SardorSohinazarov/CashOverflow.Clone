@@ -4,28 +4,32 @@
 // --------------------------------------------------------
 
 using System;
+using System.Linq.Expressions;
+using CashOverflow.Clone.Broker.Loggings;
 using CashOverflow.Clone.Broker.StorageBroker;
 using CashOverflow.Clone.Models.Locations;
 using CashOverflow.Clone.Services.Foundation.Locations;
 using Moq;
 using Tynamix.ObjectFiller;
+using Xeptions;
 
 namespace CashOverflow.Clone.Tests.Unit.Services.Foundations.Locations;
 
 public partial class LocationServiceTests
 {
     private readonly Mock<IStorageBroker> storageBrokerMock;
+    private readonly Mock<ILoggingBroker> loggingBrokerMock;
     private readonly ILocationService locationService;
 
     public LocationServiceTests()
     {
         this.storageBrokerMock = new Mock<IStorageBroker>();
-        this.locationService = new LocationService(
-            storageBroker: this.storageBrokerMock.Object);
-    }
+        this.loggingBrokerMock = new Mock<ILoggingBroker>();
 
-    public Location CreateRandomLocation() =>
-        CreateLocationFiller(dates: GetRandomDatetimeOffset()).Create();
+        this.locationService = new LocationService(
+            storageBroker: this.storageBrokerMock.Object,
+            loggingBroker:loggingBrokerMock.Object);
+    }
 
     private Filler<Location> CreateLocationFiller(DateTimeOffset dates)
     {
@@ -37,6 +41,12 @@ public partial class LocationServiceTests
         return filler;
     }
 
+    private Expression<Func<Xeption,bool>> SameExceptionAs(Xeption expectedException)=>
+        actualException => actualException.SameExceptionAs(expectedException);
+
     private DateTimeOffset GetRandomDatetimeOffset() =>
         new DateTimeRange(earliestDate: DateTime.UnixEpoch).GetValue();
+
+    private Location CreateRandomLocation() =>
+        CreateLocationFiller(dates: GetRandomDatetimeOffset()).Create();
 }
