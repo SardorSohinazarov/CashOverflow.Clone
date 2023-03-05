@@ -10,14 +10,10 @@ namespace CashOverflow.Clone.Broker.Loggings
         public LoggingBroker(ILogger<LoggingBroker> logger)=>
             this.logger = logger;
 
-        public void LogCritical(Exception exception)
-        {
-            throw new NotImplementedException();
-        }
+        public void LogCritical(Exception exception)=>
+            this.logger.LogCritical(exception.Message, exception);
 
-        public void LogError(Exception exception)
-        {
-            throw new NotImplementedException();
-        }
+        public void LogError(Exception exception)=>
+            this.logger.LogError(exception.Message, exception);
     }
 }

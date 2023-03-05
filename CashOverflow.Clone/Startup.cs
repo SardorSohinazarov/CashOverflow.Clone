@@ -3,6 +3,7 @@
 // Developed by CashOverflow Team
 // --------------------------------------------------------
 
+using CashOverflow.Clone.Broker.Loggings;
 using CashOverflow.Clone.Broker.StorageBroker;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -32,12 +33,11 @@ namespace CashOverflow.Clone
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc(
-                    name:"v1",
-                    info:new OpenApiInfo { Title = "CashOverflow.Clone", Version = "v1" }
+                    name: "v1",
+                    info: new OpenApiInfo { Title = "CashOverflow.Clone", Version = "v1" }
                     );
             });
-
-            services.AddTransient<IStorageBroker,StorageBroker>();
+            AddServices(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,6 +60,12 @@ namespace CashOverflow.Clone
             {
                 endpoints.MapControllers();
             });
+        }
+
+        private static void AddServices(IServiceCollection services)
+        {
+            services.AddTransient<IStorageBroker, StorageBroker>();
+            services.AddTransient<ILoggingBroker, LoggingBroker>();
         }
     }
 }
