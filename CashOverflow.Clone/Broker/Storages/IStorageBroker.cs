@@ -3,13 +3,9 @@
 // Developed by CashOverflow Team
 // --------------------------------------------------------
 
-using CashOverflow.Clone.Models.Languages;
-using Microsoft.EntityFrameworkCore;
-
 namespace CashOverflow.Clone.Broker.StorageBroker
 {
-    public partial class StorageBroker
+    public partial interface IStorageBroker
     {
-        public DbSet<Language> Languages { get; set; }
     }
 }

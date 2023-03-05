@@ -20,21 +20,20 @@ namespace CashOverflow.Clone.Broker.StorageBroker
             this.configuration = configuration;
             this.Database.Migrate();
         }
-
-        public async ValueTask<T> InsertAsync<T> (T @object)
-        {
-            var broker = new StorageBroker(this.configuration);
-            broker.Entry(@object).State = EntityState.Added;
-            await broker.SaveChangesAsync();
-
-            return @object;
-        }
-
+ 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             string connectionString = this.configuration.GetConnectionString(name:"DefaultConnection");
 
             optionsBuilder.UseSqlServer(connectionString);
+        }
+
+        private async ValueTask<T> InsertAsync<T>(T @object)
+        {
+            var broker = new StorageBroker(configuration: this.configuration);
+            broker.Entry(@object).State = EntityState.Added;
+            await broker.SaveChangesAsync();
+            return @object;
         }
     }
 }
