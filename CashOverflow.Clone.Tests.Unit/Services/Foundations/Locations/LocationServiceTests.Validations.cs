@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CashOverflow.Clone.Tests.Unit.Services.Foundations.Locations
 {
-    public class LocationServiceTests
+    public partial class LocationServiceTests
     {
     }
 }
