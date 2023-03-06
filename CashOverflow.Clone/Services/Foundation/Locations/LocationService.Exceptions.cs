@@ -6,12 +6,13 @@
 using System.Threading.Tasks;
 using CashOverflow.Clone.Models.Locations;
 using CashOverflow.Clone.Models.Locations.Exceptions;
+using Xeptions;
 
 namespace CashOverflow.Clone.Services.Foundation.Locations
 {
     public partial class LocationService
     {
-        private delegate ValueTask<Location> ReturningLocationFunction()
+        private delegate ValueTask<Location> ReturningLocationFunction();
         private async ValueTask<Location> TryCatch(ReturningLocationFunction returningLocationFunction)
         {
             try
@@ -20,15 +21,13 @@ namespace CashOverflow.Clone.Services.Foundation.Locations
             }
             catch (NullLocationException nullLocationException)
             {
-                LocationValidationException locationValidationException = CreateAndLogValidationException(nullLocationException);
-
-                throw locationValidationException;
+                throw CreateAndLogValidationException(nullLocationException);
             }
         }
 
-        private LocationValidationException CreateAndLogValidationException(NullLocationException nullLocationException)
+        private LocationValidationException CreateAndLogValidationException(Xeption exception)
         {
-            var locationValidationException = new LocationValidationException(nullLocationException);
+            var locationValidationException = new LocationValidationException(exception);
             this.loggingBroker.LogError(locationValidationException);
             return locationValidationException;
         }
