@@ -25,7 +25,7 @@ namespace CashOverflow.Clone.Services.Foundation.Locations
         public ValueTask<Location> AddLocationAsync(Location location) =>
             TryCatch(async () =>
             {
-                ValidateLocationNotNull(location);
+                ValidationLocationOnAdd(location);
 
                 return await this.storageBroker.InsertLocationAsync(location);
             });

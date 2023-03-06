@@ -23,6 +23,10 @@ namespace CashOverflow.Clone.Services.Foundation.Locations
             {
                 throw CreateAndLogValidationException(nullLocationException);
             }
+            catch (LocationValidationException locationValidationException)
+            {
+                throw CreateAndLogValidationException(locationValidationException);
+            }
         }
 
         private LocationValidationException CreateAndLogValidationException(Xeption exception)
