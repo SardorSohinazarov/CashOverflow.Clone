@@ -22,21 +22,12 @@ namespace CashOverflow.Clone.Services.Foundation.Locations
             this.loggingBroker = loggingBroker;
         }
 
-        public async ValueTask<Location> AddLocationAsync(Location location)
-        {
-            try
+        public ValueTask<Location> AddLocationAsync(Location location) =>
+            TryCatch(async () =>
             {
                 ValidateLocationNotNull(location);
 
                 return await this.storageBroker.InsertLocationAsync(location);
-            }
-            catch (NullLocationException nullLocationException)
-            {
-                var locationValidationException = new LocationValidationException(nullLocationException);
-                this.loggingBroker.LogError(locationValidationException);
-
-                throw locationValidationException;
-            }
-        }
+            });
     }
 }
