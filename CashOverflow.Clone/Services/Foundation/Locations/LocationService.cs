@@ -6,7 +6,7 @@ using CashOverflow.Clone.Models.Locations.Exceptions;
 
 namespace CashOverflow.Clone.Services.Foundation.Locations
 {
-    public class LocationService : ILocationService
+    public partial class LocationService : ILocationService
     {
         private readonly IStorageBroker storageBroker;
         private readonly ILoggingBroker loggingBroker;
@@ -26,10 +26,11 @@ namespace CashOverflow.Clone.Services.Foundation.Locations
         {
             try
             {
-                if (location is null)
-                    throw new NullLocationException();
+                ValidateLocationNotNull(location);
+
                 return await this.storageBroker.InsertLocationAsync(location);
-            }catch(NullLocationException nullLocationException)
+            }
+            catch (NullLocationException nullLocationException)
             {
                 var locationValidationException = new LocationValidationException(nullLocationException);
                 this.loggingBroker.LogError(locationValidationException);
